@@ -4,7 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Rihanna Live Spotlight with biography, gallery, videos, show dates, and booking contact." />
+  <meta name="theme-color" content="#0d0d0f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Rihanna Live" />
   <title>Rihanna Live | Cover Page</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon-192.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1604514628550-37477afdf4e3?auto=format&fit=crop&w=1800&q=80" />
@@ -783,6 +791,14 @@
       newsletterMsg.textContent = "Subscribed. You will receive updates soon.";
       newsletterForm.reset();
     });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(() => {
+          // Ignore registration failures for local/static previews.
+        });
+      });
+    }
   </script>
 </body>
 </html>
